@@ -1,61 +1,68 @@
-# 🎬 Movie Recommendation System using MovieLens Dataset
+🎬 Movie Recommendation System using MovieLens Dataset
+This project explores multiple types of movie recommendation systems using the MovieLens 100K dataset, focusing on:
 
-This project explores two fundamental types of recommendation systems built using the [MovieLens 100K dataset]:
+Item-Based Collaborative Filtering (IBCF)
 
-1.  **Item-Based Collaborative Filtering** using **Cosine Similarity**
-2.  **User-Based Collaborative Filtering** using **Top-K Nearest Neighbors**
+User-Based Collaborative Filtering (UBCF)
 
----
+Matrix Factorization (SVD)
 
-##  Approach 1: Item-Based Collaborative Filtering
+Content-Based Filtering (CBF)
 
-This method finds **similar movies** based on user ratings and recommends movies **similar to a target movie**.
+✅ Approach 1: Item-Based Collaborative Filtering (IBCF)
+Recommends movies that are similar to a given movie based on how users have rated them.
 
-###  Steps:
+Steps:
+Load and merge ratings and movie metadata.
 
-1. Load and merge `ratings.csv` and `movies.csv`.
-2. Create a pivot table (user-movie matrix).
-3. Calculate **Cosine Similarity** between movie vectors.
-4. Choose a **target movie** (e.g., *Star Wars*).
-5. Find similar movies with a sufficient number of ratings.
-6. Recommend **top N similar movies**.
+Create a user-item pivot table.
 
-###  Example Output:
-Top 10 movies similar to **Star Wars (1977)** based on cosine similarity and rating overlap.
+Compute cosine similarity between item vectors (movies).
 
----
+Given a movie, recommend top N similar movies based on similarity.
 
-##  Approach 2: User-Based Collaborative Filtering
+✅ Approach 2: User-Based Collaborative Filtering (UBCF)
+Recommends movies based on what similar users have liked.
 
-This method finds **users similar to the target user** and recommends movies that similar users have liked, but the current user hasn't watched.
+Steps:
+Build the user-item rating matrix.
 
-### Steps:
+Compute cosine similarity between users.
 
-1. Build the **user-item matrix** (pivot table of ratings).
-2. Calculate **Cosine Similarity between users**.
-3. For a given `user_id`, find **Top-K most similar users**.
-4. Use **weighted average of their ratings** to predict scores for unseen movies.
-5. Recommend top N movies with the highest predicted scores.
+Find Top-K similar users for a given user.
 
-   
+Predict unseen movie ratings using weighted average.
 
-# 🎬 SVD-Based Movie Recommendation System
+Recommend top N movies with highest predicted scores.
 
-# WHY SVD: 
-SVD is preferred over UBCF and IBCF because it captures latent relationships and works well even with sparse data, while UBCF/IBCF rely only on explicit similarity between users/items.
+✅ Approach 3: SVD-Based Collaborative Filtering
+Uses Truncated SVD (matrix factorization) to uncover latent features of users and movies, helping recommend even in sparse scenarios.
 
- A movie recommender system using **Matrix Factorization via Truncated SVD** from the scikit-learn library.
+Why SVD?
+SVD is better than UBCF and IBCF for capturing hidden relationships and performing well on sparse datasets.
 
-## Steps:
+Steps:
+Build user-item matrix.
 
-- We create a user-item rating matrix.
-- Apply **Truncated SVD** to reduce dimensions and discover **latent features**.
-- Compute **cosine similarity** between movies in latent space.
-- Recommend top `n` similar movies for a given movie.
+Apply Truncated SVD to reduce dimensions.
 
+Compute cosine similarity in the latent space.
 
+Recommend top N similar movies to a given movie.
 
+✅ Approach 4: Content-Based Filtering (CBF)
+Recommends movies based on features of the content (e.g., genres, movie overview), independent of other users' ratings.
 
+Steps:
+Extract movie features (genres, overview, etc.).
 
+Combine them into a text field (genres + overview).
 
+Convert this text into TF-IDF vectors.
 
+Compute cosine similarity between movie vectors.
+
+Recommend top N movies similar to the input movie based on content.
+
+Why Content-Based?
+Works well for new users or items, since it relies on content, not past ratings.
