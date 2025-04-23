@@ -1,19 +1,46 @@
-# Movie-Recommendation-System-Item-Based-Collaborative-Filtering
-This project builds a simple movie recommender system using Item-Based Collaborative Filtering with the MovieLens 100K dataset.
+# 🎬 Movie Recommendation System using MovieLens Dataset
+
+This project explores two fundamental types of recommendation systems built using the [MovieLens 100K dataset]:
+
+1.  **Item-Based Collaborative Filtering** using **Cosine Similarity**
+2.  **User-Based Collaborative Filtering** using **Top-K Nearest Neighbors**
+
+---
+
+##  Approach 1: Item-Based Collaborative Filtering
+
+This method finds **similar movies** based on user ratings and recommends movies **similar to a target movie**.
+
+###  Steps:
+
+1. Load and merge `ratings.csv` and `movies.csv`.
+2. Create a pivot table (user-movie matrix).
+3. Calculate **Cosine Similarity** between movie vectors.
+4. Choose a **target movie** (e.g., *Star Wars*).
+5. Find similar movies with a sufficient number of ratings.
+6. Recommend **top N similar movies**.
+
+###  Example Output:
+Top 10 movies similar to **Star Wars (1977)** based on cosine similarity and rating overlap.
+
+---
+
+##  Approach 2: User-Based Collaborative Filtering
+
+This method finds **users similar to the target user** and recommends movies that similar users have liked, but the current user hasn't watched.
+
+### Steps:
+
+1. Build the **user-item matrix** (pivot table of ratings).
+2. Calculate **Cosine Similarity between users**.
+3. For a given `user_id`, find **Top-K most similar users**.
+4. Use **weighted average of their ratings** to predict scores for unseen movies.
+5. Recommend top N movies with the highest predicted scores.
+
+###  Example Output:
+Top 10 movies **predicted for user 1** using preferences of the top 5 similar users.
 
 
-Steps
 
-1.Load and Merge Data: Merged movie ratings and movie titles using movie_id as the key.
 
-2.User-Item Matrix: Created using pandas pivot_table.
-Rows → users
-Columns → movie titles
-Values → ratings (NaN if not rated)
-
-3.Item-Item Similarity: Used pandas.corrwith() to compute similarity between a target movie and all others.
-
-4.Filtering: Only considered movies with more than 50 ratings to ensure reliable similarity.
-
-5.Recommendation: Recommended top N movies similar to a selected target (e.g., Star Wars (1977)).
 
