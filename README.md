@@ -37,8 +37,23 @@ This method finds **users similar to the target user** and recommends movies tha
 4. Use **weighted average of their ratings** to predict scores for unseen movies.
 5. Recommend top N movies with the highest predicted scores.
 
-###  Example Output:
-Top 10 movies **predicted for user 1** using preferences of the top 5 similar users.
+   
+
+# 🎬 SVD-Based Movie Recommendation System
+
+# WHY SVD: 
+SVD is preferred over UBCF and IBCF because it captures latent relationships and works well even with sparse data, while UBCF/IBCF rely only on explicit similarity between users/items.
+
+ A movie recommender system using **Matrix Factorization via Truncated SVD** from the scikit-learn library.
+
+## Steps:
+
+- We create a user-item rating matrix.
+- Apply **Truncated SVD** to reduce dimensions and discover **latent features**.
+- Compute **cosine similarity** between movies in latent space.
+- Recommend top `n` similar movies for a given movie.
+
+
 
 
 
