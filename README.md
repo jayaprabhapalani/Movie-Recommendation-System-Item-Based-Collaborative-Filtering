@@ -3,6 +3,7 @@ This project builds a simple movie recommender system using Item-Based Collabora
 
 
 Steps
+
 1.Load and Merge Data: Merged movie ratings and movie titles using movie_id as the key.
 
 2.User-Item Matrix: Created using pandas pivot_table.
