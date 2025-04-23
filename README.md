@@ -3,8 +3,11 @@
 This project explores multiple types of movie recommendation systems using the MovieLens 100K dataset, focusing on:
 
 1.Item-Based Collaborative Filtering (IBCF)
+
 2.User-Based Collaborative Filtering (UBCF)
+
 3.Matrix Factorization (SVD)
+
 4.Content-Based Filtering (CBF)
  
 # Approach 1: Item-Based Collaborative Filtering (IBCF)
